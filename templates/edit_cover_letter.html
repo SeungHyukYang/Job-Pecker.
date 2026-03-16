@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Cover Letter - Job Pecker</title>
+</head>
+<body>
+
+    <h1>Edit Cover Letter</h1>
+
+    {% if job %}
+        <h2>{{ job.title }} - {{ job.company }}</h2>
+
+        <form method="post" action="/edit-cover-letter/{{ job.id }}">
+
+            <textarea
+                name="content"
+                rows="24"
+                style="width:100%; max-width:1000px;"
+            >{{ cover_letter_text }}</textarea>
+
+            <br><br>
+
+            <button type="submit">Save Cover Letter Draft</button>
+
+            <a href="/prepare-application/{{ job.id }}" style="margin-left:10px;">
+                Back to Preview
+            </a>
+
+        </form>
+
+    {% else %}
+
+        <p>Job not found.</p>
+        <a href="/">Back to Review Queue</a>
+
+    {% endif %}
+
+</body>
+</html>

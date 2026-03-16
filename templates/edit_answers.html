@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Job Pecker</title>
+</head>
+<body>
+
+<h1>Job Pecker Review Queue</h1>
+
+{% for job in jobs %}
+
+<div style="border:1px solid #ccc; padding:15px; margin:10px">
+
+<h3>{{ job.title }}</h3>
+
+<p>
+Company: {{ job.company }} <br>
+Location: {{ job.location }} <br>
+Distance: {{ job.distance_km }} km <br>
+Fit Score: {{ job.fit_score }}/100 <br>
+Visa Risk: {{ job.visa_risk }}
+</p>
+
+<a href="{{ job.url }}" target="_blank">View Job</a>
+
+<br><br>
+
+<div style="margin-top: 10px; margin-bottom: 10px;">
+    <strong>Status:</strong>
+
+    {% set status = decisions.get(job.id, "not reviewed") %}
+
+    {% if status == "generating_documents" %}
+        작성중입니다
+    {% elif status == "documents_ready" %}
+        Documents ready
+    {% elif status == "resume_edited" %}
+        Resume edited
+    {% elif status == "answers_ready" %}
+        Answers ready
+    {% elif status == "ready_to_apply" %}
+        Ready to apply
+    {% elif status == "skipped" %}
+        Skipped
+    {% else %}
+        Not reviewed
+    {% endif %}
+</div>
+
+<div style="display: flex; gap: 8px; flex-wrap: wrap;">
+    <form method="post" action="/decision" style="display:inline;">
+        <input type="hidden" name="job_id" value="{{ job.id }}">
+        <input type="hidden" name="action" value="apply">
+        <button type="submit">Apply</button>
+    </form>
+
+    <form method="post" action="/decision" style="display:inline;">
+        <input type="hidden" name="job_id" value="{{ job.id }}">
+        <input type="hidden" name="action" value="skip">
+        <button type="submit">Skip</button>
+    </form>
+
+    <form method="post" action="/decision" style="display:inline;">
+        <input type="hidden" name="job_id" value="{{ job.id }}">
+        <input type="hidden" name="action" value="edit_resume">
+        <button type="submit">Edit resume</button>
+    </form>
+
+    <form method="post" action="/decision" style="display:inline;">
+        <input type="hidden" name="job_id" value="{{ job.id }}">
+        <input type="hidden" name="action" value="edit_answers">
+        <button type="submit">Edit answers</button>
+    </form>
+</div>
+
+</div>
+
+{% endfor %}
+
+</body>
+</html>

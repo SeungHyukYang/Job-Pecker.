@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Job Pecker - Onboarding</title>
+</head>
+<body>
+
+<h1>Welcome to Job Pecker</h1>
+
+<p>
+Upload your base resumes and one base cover letter to get started.
+</p>
+
+<form method="post" action="/onboarding" enctype="multipart/form-data">
+
+    <div style="margin-bottom:20px;">
+        <h3>Upload Resumes</h3>
+        <p>You can upload multiple resume files.</p>
+        <input type="file" name="resumes" multiple required>
+    </div>
+
+    <div style="margin-bottom:20px;">
+        <h3>Upload Base Cover Letter</h3>
+        <input type="file" name="cover_letter" required>
+    </div>
+
+    <button type="submit">Save and Continue</button>
+</form>
+
+<hr style="margin-top:30px; margin-bottom:30px;">
+
+<h3>Currently Uploaded Files</h3>
+
+<p><strong>Resumes</strong></p>
+<ul>
+    {% for file in uploaded_resumes %}
+        <li>{{ file }}</li>
+    {% endfor %}
+</ul>
+
+<p><strong>Cover Letter</strong></p>
+{% if uploaded_cover_letter %}
+    <p>{{ uploaded_cover_letter }}</p>
+{% else %}
+    <p>No cover letter uploaded yet.</p>
+{% endif %}
+
+</body>
+</html>

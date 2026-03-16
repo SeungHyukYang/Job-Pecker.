@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Resume - Job Pecker</title>
+</head>
+<body>
+    <h1>Edit Resume</h1>
+
+    {% if job %}
+        <h2>{{ job.title }} - {{ job.company }}</h2>
+        <p>
+            <strong>Location:</strong> {{ job.location }}<br>
+            <strong>Fit Score:</strong> {{ job.fit_score }}/100<br>
+            <strong>Visa Risk:</strong> {{ job.visa_risk }}
+        </p>
+
+        <p><strong>Job Description</strong></p>
+        <div style="border:1px solid #ccc; padding:12px; margin-bottom:20px;">
+            {{ job.description }}
+        </div>
+
+        <form method="post" action="/edit-resume/{{ job.id }}">
+            <textarea
+                name="content"
+                rows="24"
+                style="width:100%; max-width:1000px;"
+            >{{ resume_text }}</textarea>
+
+            <br><br>
+
+            <button type="submit">Save Resume Draft</button>
+            <a href="/" style="margin-left:10px;">Back to Review Queue</a>
+        </form>
+    {% else %}
+        <p>Job not found.</p>
+        <a href="/">Back to Review Queue</a>
+    {% endif %}
+</body>
+</html>

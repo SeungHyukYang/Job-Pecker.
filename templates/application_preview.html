@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Application Preview - Job Pecker</title>
+</head>
+<body>
+
+    <h1>Application Preview</h1>
+
+    {% if job %}
+        <h2>{{ job.title }} - {{ job.company }}</h2>
+
+        <p>
+            <strong>Location:</strong> {{ job.location }}<br>
+            <strong>Fit Score:</strong> {{ job.fit_score }}/100<br>
+            <strong>Visa Risk:</strong> {{ job.visa_risk }}
+        </p>
+
+        <h3>Resume Draft</h3>
+        <div style="border:1px solid #ccc; padding:12px; margin-bottom:20px; white-space:pre-wrap;">
+            {{ resume_text }}
+        </div>
+
+        <div style="margin-bottom: 24px;">
+            <a href="/edit-resume/{{ job.id }}">Edit resume</a>
+        </div>
+
+        <h3>Cover Letter Draft</h3>
+        <div style="border:1px solid #ccc; padding:12px; margin-bottom:20px; white-space:pre-wrap;">
+            {{ cover_letter_text }}
+        </div>
+
+        <div style="margin-bottom: 24px;">
+            <a href="/edit-cover-letter/{{ job.id }}">Edit cover letter</a>
+        </div>
+
+        <form method="get" action="/prepare-answers/{{ job.id }}" style="margin-top:20px; margin-bottom:20px;">
+            <button type="submit">Confirm Documents</button>
+        </form>
+
+        <div style="display:flex; gap:12px; flex-wrap:wrap;">
+            <a href="/">Back to Review Queue</a>
+        </div>
+    {% else %}
+        <p>Job not found.</p>
+        <a href="/">Back to Review Queue</a>
+    {% endif %}
+
+</body>
+</html>

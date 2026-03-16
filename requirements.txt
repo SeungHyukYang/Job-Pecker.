@@ -1,0 +1,12 @@
+fastapi
+uvicorn
+jinja2
+python-multipart
+playwright
+python-docx
+pydantic
+beautifulsoup4
+requests
+geopy
+openai
+python-multipart

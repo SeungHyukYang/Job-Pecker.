@@ -1,0 +1,26 @@
+[
+    {
+      "id": "1",
+      "title": "Data Analyst",
+      "company": "Xero",
+      "location": "Auckland",
+      "description": "Analyze product data and create dashboards using SQL and Python.",
+      "url": "https://example.com/job1",
+      "source": "seek",
+      "distance_km": 6.2,
+      "visa_risk": "low",
+      "fit_score": 84
+    },
+    {
+      "id": "2",
+      "title": "Business Analyst",
+      "company": "ASB Bank",
+      "location": "Auckland",
+      "description": "Work with stakeholders to analyze business requirements.",
+      "url": "https://example.com/job2",
+      "source": "indeed",
+      "distance_km": 11.4,
+      "visa_risk": "medium",
+      "fit_score": 71
+    }
+  ]

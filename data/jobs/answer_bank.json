@@ -1,0 +1,22 @@
+[
+  {
+    "question_key": "why are you interested in this role",
+    "question_text": "Why are you interested in this role?",
+    "answer": "a"
+  },
+  {
+    "question_key": "what makes you a strong fit for this role",
+    "question_text": "What makes you a strong fit for this role?",
+    "answer": "b"
+  },
+  {
+    "question_key": "do you have the legal right to work in new zealand",
+    "question_text": "Do you have the legal right to work in New Zealand?",
+    "answer": "c"
+  },
+  {
+    "question_key": "why do you want to work at asb bank",
+    "question_text": "Why do you want to work at ASB Bank?",
+    "answer": "d"
+  }
+]
